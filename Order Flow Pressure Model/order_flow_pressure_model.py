@@ -2,7 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
 from mpl_toolkits.mplot3d import Axes3D
-import sklearn.linear_model
+from sklearn.linear_model import LinearRegression
+#import sklearn.linear_model
 
 # 1. DATA GENERATION
 np.random.seed(42)
@@ -27,7 +28,8 @@ price = np.array(price)
 # 2. MODELING: Regression to predict next price move from imbalance
 X = imbalance[:-1].reshape(-1, 1)
 y = price[1:] - price[:-1]
-reg = sklearn.linear_model.LinearRegression().fit(X, y)
+reg = LinearRegression().fit(X, y)
+#reg = sklearn.linear_model.LinearRegression().fit(X, y)
 pred_move = reg.predict(imbalance.reshape(-1, 1))
 
 # 3. TRADING LOGIC
